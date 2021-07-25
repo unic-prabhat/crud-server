@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { v4: uuidv4 } = require('uuid');
 const Schema = mongoose.Schema;
 
 const usersSchema = new Schema({
@@ -23,6 +24,14 @@ const usersSchema = new Schema({
       },
       address:{
         type:String
+      },
+      email_verification:{
+        type:String,
+        default:'NotVerified'
+      },
+      email_verification_code:{
+        type:String,
+        default:uuidv4()
       }
 
 }, {timestamps:true});
